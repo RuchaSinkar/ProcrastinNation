@@ -1,0 +1,372 @@
+/*body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #111;
+    color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    max-width: 700px;
+    padding: 20px;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .tagline {
+    font-style: italic;
+    color: #aaa;
+  }
+  
+  .status-panel {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .timer, .status {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    background: #f04a4a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  button.hidden {
+    display: none;
+  }
+  
+  .roast-box {
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  #roastMessage {
+    color: #ff8a8a;
+    font-style: italic;
+  }
+  
+  .achievements {
+    background-color: #1b1b1b;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  
+  .achievements ul {
+    padding-left: 20px;
+  }
+  
+  .achievements li {
+    margin: 5px 0;
+  }
+  */
+
+/* Reset and font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #1f1f2e, #0d0d14);
+  color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 700px;
+  padding: 25px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+header h1 {
+  font-size: 2.5rem;
+  color: #ff4d6d;
+  text-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
+}
+.tagline {
+  font-style: italic;
+  color: #bbb;
+}
+
+/* Panel */
+.status-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 16px;
+  text-align: center;
+  margin-bottom: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.status, .timer {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+/* Input */
+.status-panel input[type="text"] {
+  padding: 10px;
+  width: 90%;
+  margin-top: 15px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+/* Buttons */
+button {
+  margin: 15px 10px 0;
+  padding: 12px 20px;
+  font-weight: bold;
+  font-size: 1rem;
+  background: linear-gradient(45deg, #ff4d6d, #ff8c42);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255,77,109,0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(255,140,66,0.6);
+}
+button.hidden {
+  display: none;
+}
+
+/* Roast box */
+.roast-box {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+#roastMessage {
+  color: #ff8a8a;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* Achievements */
+.achievements {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 20px;
+  border-radius: 14px;
+}
+.achievements h3 {
+  margin-bottom: 10px;
+  color: #ffd27f;
+  text-shadow: 0 0 10px rgba(255,210,127,0.5);
+}
+.achievements li {
+  margin: 6px 0;
+  list-style: none;
+  padding-left: 20px;
+  position: relative;
+}
+.achievements li::before {
+  content: "•";
+  color: #ffd27f;
+  position: absolute;
+  left: 0;
+}
+/* --- Session Management Buttons and Input --- */
+
+/* Session Controls */
+.session-controls {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  padding: 18px;
+  border-radius: 14px;
+  margin-top: 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.session-controls h2 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #ffb3c1;
+  text-shadow: 0 0 10px rgba(255, 179, 193, 0.4);
+}
+
+/* Buttons inside session controls */
+.session-controls button {
+  margin: 8px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #ff4d6d, #ff8c42);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(255, 77, 109, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.session-controls button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(255,140,66,0.5);
+}
+
+/* Input for task deletion */
+.session-controls input[type="text"] {
+  padding: 8px;
+  width: 65%;
+  margin: 8px auto;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Session Output Box */
+.session-output {
+  background: rgba(255, 255, 255, 0.07);
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 10px;
+  white-space: pre-wrap;
+  text-align: left;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stats-card {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.stats-card h3 {
+  color: #ffd27f;
+  text-shadow: 0 0 10px rgba(255, 210, 127, 0.5);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.stat-item {
+  text-align: center;
+  margin: 10px;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.badges h4 {
+  margin-bottom: 10px;
+  color: #ff8c42;
+  text-align: center;
+}
+
+.badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.badge {
+  background: linear-gradient(45deg, #ff8c42, #ff4d6d);
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 8px rgba(255,140,66,0.5);
+}
+
+/* Session history table - gradient theme */
+.session-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(255, 140, 66, 0.2);
+  color: #fff;
+}
+
+.session-table th {
+  background: linear-gradient(45deg, #ff4d6d, #ff8c42);
+  color: #fff;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.session-table td {
+  padding: 10px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f1f1f1;
+}
+
+.session-table tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.session-table tr:hover {
+  background: rgba(255, 77, 109, 0.15);
+  transition: background 0.2s ease-in-out;
+}

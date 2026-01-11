@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ProcrastinNation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+      <header>
+        <h1>ProcrastinNation</h1>
+        <p class="tagline">When you slack, we attack.</p>
+      </header>
+
+      <main>
+        <!-- We wrap in a form but prevent submit -->
+        <form class="status-panel">
+          <p class="status">Status: <span id="status">Focused</span></p>
+          <p class="timer">Focus Time: <span id="focusTime">00:00</span></p>
+
+          <input type="text" id="taskInput" placeholder="Enter your task" required>
+
+          <button type="button" id="startBtn">Start Focus Session</button>
+          <button type="button" id="stopBtn" class="hidden">Stop</button>
+        </form>
+
+        <div class="roast-box" id="roastBox">
+          <h2>🔥 Roast Console</h2>
+          <p id="roastMessage">Stay sharp or get scorched.</p>
+        </div>
+
+        <div class="achievements">
+          <h3>🎖️ Roast Achievements</h3>
+          <ul>
+            <li>✅ Survived 15 mins of focus</li>
+            <li>🧠 Remembered you had homework</li>
+            <li>🥲 Didn't open Instagram (yet)</li>
+          </ul>
+        </div>
+        <div class="session-controls">
+          <h2>📜 Session History</h2>
+
+          <button id="viewSessionsBtn">View Sessions</button>
+          <br><br>
+
+          <input type="text" id="deleteTaskInput" placeholder="Task name to delete">
+          <button id="deleteSessionBtn">Delete Session</button>
+          <br><br>
+
+          <button id="clearSessionsBtn">Clear All Sessions</button>
+
+          <pre id="sessionOutput" class="session-output"></pre>
+        </div>
+        <div class="stats-card">
+          <h3>Focus Stats</h3>
+          <div class="stats-row">
+            <div class="stat-item">
+              <span class="stat-label">Today's Focus</span>
+              <span class="stat-value" id="todayFocus">0m</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Current Streak</span>
+              <span class="stat-value" id="currentStreak">0 days</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Longest Streak</span>
+              <span class="stat-value" id="longestStreak">0 days</span>
+            </div>
+          </div>
+          <div class="badges">
+            <h4>Badges</h4>
+            <div id="badgesList" class="badge-container">
+              <!-- badges will be inserted dynamically -->
+            </div>
+          </div>
+        </div>
+
+
+      </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
